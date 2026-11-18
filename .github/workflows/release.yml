@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node check-bassline.cjs
+      - run: mkdir -p 'Bassline Generator' && cp chord_progressions.js bassline_generator.js 'Bassline Generator/' && node check-bassline.cjs
       - name: Package device
         run: |
           python3 - <<'PY'
@@ -46,3 +46,4 @@ jobs:
             tag='v1.0.0'
           fi
           gh release create "$tag" device.zip device.zip.sha256 --title "Bassline Generator $tag" --generate-notes
+
